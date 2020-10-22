@@ -17,6 +17,7 @@
 		E0986F182540674D00B34C1C /* URLParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0986F172540674D00B34C1C /* URLParameterEncoder.swift */; };
 		E0986F1C25406CA500B34C1C /* JSONParameterEncoder.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0986F1B25406CA500B34C1C /* JSONParameterEncoder.swift */; };
 		E0986F2025406EAD00B34C1C /* NetworkRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0986F1F25406EAD00B34C1C /* NetworkRouter.swift */; };
+		E0986F3D254110B600B34C1C /* HVNetwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = E0986F3C254110B600B34C1C /* HVNetwork.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		E0986F172540674D00B34C1C /* URLParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = URLParameterEncoder.swift; sourceTree = "<group>"; };
 		E0986F1B25406CA500B34C1C /* JSONParameterEncoder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = JSONParameterEncoder.swift; sourceTree = "<group>"; };
 		E0986F1F25406EAD00B34C1C /* NetworkRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkRouter.swift; sourceTree = "<group>"; };
+		E0986F3C254110B600B34C1C /* HVNetwork.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HVNetwork.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -87,6 +89,7 @@
 			children = (
 				E0986F10254065B600B34C1C /* Encoding */,
 				E0986F01254063DC00B34C1C /* Service */,
+				E0986F3C254110B600B34C1C /* HVNetwork.swift */,
 				E0986E892540380100B34C1C /* hvNetwork.h */,
 				E0986E8A2540380100B34C1C /* Info.plist */,
 			);
@@ -234,6 +237,7 @@
 			files = (
 				E0986F0D2540652700B34C1C /* HTTPTask.swift in Sources */,
 				E0986F2025406EAD00B34C1C /* NetworkRouter.swift in Sources */,
+				E0986F3D254110B600B34C1C /* HVNetwork.swift in Sources */,
 				E0986F03254063E600B34C1C /* HTTPMethod.swift in Sources */,
 				E0986F182540674D00B34C1C /* URLParameterEncoder.swift in Sources */,
 				E0986F12254065BD00B34C1C /* ParameterEncoding.swift in Sources */,
