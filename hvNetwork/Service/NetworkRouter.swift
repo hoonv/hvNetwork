@@ -31,14 +31,6 @@ public class Router<EndPoint: EndPointType>: NetworkRouter {
     public func request(_ route: EndPoint, completion: @escaping TaskCompletion) {
         do {
             let request = try self.buildRequest(from: route)
-            if route.httpMethod == .post {
-                let data = request.httpBody!
-                let responseJSON = try? JSONSerialization.jsonObject(with: data, options: [])
-                if let responseJSON = responseJSON as? [String: Any] {
-                    print(responseJSON)
-                }
-            }
-            
             task = session.dataTask(with: request, completionHandler: { data, response, error in
                 completion(data, response, error)
             })
