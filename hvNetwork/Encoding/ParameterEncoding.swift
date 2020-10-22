@@ -17,6 +17,8 @@ public protocol ParameterEncoder {
 public enum NetworkError : String, Error {
     case parametersNil = "Parameters were nil."
     case encodingFailed = "Parameter encoding failed."
+    case decodingFailed = "Parameter decoding failed."
     case missingURL = "URL is nil."
     case missingURLComponent = "URLComponent is nil"
+    case missingData = "data is nil"
 }
