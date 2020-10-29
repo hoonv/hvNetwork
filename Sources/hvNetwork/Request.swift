@@ -44,7 +44,12 @@ public class DataRequest {
         do {
             var request = try URLRequest(url: urlConvertible.asURL(), cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0)
             request.httpMethod = method.rawValue
-            request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            headers?.forEach { key, value in
+                request.setValue(value, forHTTPHeaderField: key)
+            }
+            if request.value(forHTTPHeaderField: "Content-Type") == nil {
+                request.setValue("application/json", forHTTPHeaderField: "Content-Type")
+            }
             if let parameters = self.parameters {
                 try JSONParameterEncoder.encode(urlRequest: &request, with: parameters)
                 return request
