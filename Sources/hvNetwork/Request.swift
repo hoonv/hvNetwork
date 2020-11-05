@@ -9,8 +9,9 @@ import Foundation
 
 public typealias HVDataResponse<Success> = Result<Success, NetworkError>
 public typealias HTTPHeaders = [String:String]
+public typealias JSON = [String:Any]
 
-public class DataRequest {
+open class DataRequest {
     
     private let urlConvertible: URLConvertible
     private let method: HTTPMethod
@@ -40,6 +41,21 @@ public class DataRequest {
         }
     }
     
+    public func response(completionHandler: @escaping (HVDataResponse<JSON>) -> Void) {
+        do {
+            let request = try buildRequest()
+            
+            URLSession.shared.dataTask(with: request, completionHandler: {
+                (data, response, error) in
+                guard let data = data,
+                      let json = try? JSONSerialization.jsonObject(with: data, options: []) as? JSON else { completionHandler(.failure(.decodingFailed)); return  }
+                completionHandler(.success(json))
+            }).resume()
+        } catch {
+            completionHandler(.failure(.missingURL))
+        }
+    }
+    
     fileprivate func buildRequest() throws -> URLRequest {
         do {
             var request = try URLRequest(url: urlConvertible.asURL(), cachePolicy: .reloadIgnoringLocalAndRemoteCacheData, timeoutInterval: 10.0)
@@ -61,7 +77,7 @@ public class DataRequest {
     }
 }
 
-public class DataRequestAsDecodable<T:Decodable>: DataRequest {
+open class DataRequestAsDecodable<T:Decodable>: DataRequest {
     
     public func response(completionHandler: @escaping (HVDataResponse<T>) -> Void) {
         do {
@@ -84,7 +100,7 @@ public class DataRequestAsDecodable<T:Decodable>: DataRequest {
     }
 }
 
-public class DownLoadRequest: DataRequest {
+open class DownLoadRequest: DataRequest {
     
     public func response(completionHandler: @escaping () -> Void) {
         
